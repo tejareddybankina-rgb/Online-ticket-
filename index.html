@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieBox - Movie Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Movie<span>Box</span></div>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search movies...">
+    </div>
+    <button id="openBookingsBtn" class="secondary-btn">My Bookings</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">MOVIE TICKETS</p>
+        <h1>Book your next movie night.</h1>
+        <p>Choose a movie, theatre, showtime and your favourite seats.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Movies</h2>
+        <span id="movieCount"></span>
+      </div>
+      <div id="movieGrid" class="movie-grid"></div>
+      <p id="noMovies" class="empty hidden">No movies found.</p>
+    </section>
+  </main>
+
+  <!-- Booking modal -->
+  <div id="bookingModal" class="modal hidden">
+    <div class="modal-card booking-card">
+      <button class="close-btn" data-close="bookingModal">&times;</button>
+
+      <div id="stepMovie" class="booking-step">
+        <p class="step-label">STEP 1 OF 4</p>
+        <h2 id="selectedMovieTitle">Select a show</h2>
+        <p id="selectedMovieMeta" class="muted"></p>
+
+        <h3>Select date</h3>
+        <div id="dateOptions" class="option-row"></div>
+
+        <h3>Select theatre</h3>
+        <div id="theatreOptions" class="stack"></div>
+
+        <h3>Select showtime</h3>
+        <div id="timeOptions" class="option-row"></div>
+
+        <button id="continueToSeats" class="primary-btn full" disabled>Continue to seats</button>
+      </div>
+
+      <div id="stepSeats" class="booking-step hidden">
+        <p class="step-label">STEP 2 OF 4</p>
+        <h2>Select seats</h2>
+        <p id="seatShowInfo" class="muted"></p>
+
+        <div class="screen">SCREEN</div>
+        <div id="seatMap" class="seat-map"></div>
+
+        <div class="legend">
+          <span><i class="seat demo"></i> Available</span>
+          <span><i class="seat selected"></i> Selected</span>
+          <span><i class="seat occupied"></i> Occupied</span>
+        </div>
+
+        <div class="booking-footer">
+          <div>
+            <strong id="seatSummary">0 seats</strong>
+            <div id="seatPrice" class="muted">₹0</div>
+          </div>
+          <button id="continueToSummary" class="primary-btn" disabled>Continue</button>
+        </div>
+      </div>
+
+      <div id="stepSummary" class="booking-step hidden">
+        <p class="step-label">STEP 3 OF 4</p>
+        <h2>Confirm booking</h2>
+        <div id="summaryBox" class="summary-box"></div>
+
+        <div class="payment-note">
+          <strong>Demo payment</strong>
+          <p>No real payment is processed. This project simulates a successful booking.</p>
+        </div>
+
+        <div class="booking-footer">
+          <button id="backToSeats" class="secondary-btn">Back</button>
+          <button id="confirmBooking" class="primary-btn">Confirm booking</button>
+        </div>
+      </div>
+
+      <div id="stepSuccess" class="booking-step hidden success-step">
+        <p class="step-label">STEP 4 OF 4</p>
+        <div class="success-icon">✓</div>
+        <h2>Booking confirmed!</h2>
+        <p>Your ticket has been booked successfully.</p>
+        <div id="ticketBox" class="ticket-box"></div>
+        <p class="muted small">This booking window will close automatically.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- My bookings modal -->
+  <div id="bookingsModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close-btn" data-close="bookingsModal">&times;</button>
+      <h2>My Bookings</h2>
+      <div id="bookingsList"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
